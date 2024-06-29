@@ -18,7 +18,7 @@ enum class Routes {
             DetailScreen.name -> DetailScreen
             UpdateScreen.name -> UpdateScreen
             ReadersStatsScreen.name -> ReadersStatsScreen
-            null -> HomeScreen
+            HomeScreen.name -> HomeScreen
             else -> throw IllegalArgumentException("Route $route is not recognized")
         }
     }

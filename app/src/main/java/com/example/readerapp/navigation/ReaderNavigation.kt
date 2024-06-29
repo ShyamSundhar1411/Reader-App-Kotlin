@@ -11,7 +11,7 @@ import com.example.readerapp.screens.ReaderSplashScreen
 fun ReaderNavigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.SplashScreen.name) {
-        {
+
             composable(Routes.SplashScreen.name) {
                 ReaderSplashScreen(navController = navController)
             }
@@ -19,6 +19,6 @@ fun ReaderNavigation() {
                 LoginScreen(navController = navController)
             }
 
-        }
+
     }
 }
