@@ -1,5 +1,6 @@
 package com.example.readerapp.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ fun ReaderLogoComponent(modifier: Modifier = Modifier){
     Text(
         text = "Reader",
         style = MaterialTheme.typography.headlineLarge,
-        color = Color.Red.copy(0.5f)
+        color = Color.Red.copy(0.5f),
+
     )
 }

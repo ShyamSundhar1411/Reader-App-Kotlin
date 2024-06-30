@@ -65,7 +65,7 @@ fun ReaderSplashScreen(navController: NavController){
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             ReaderLogoComponent()
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(40.dp))
             Text(text = "\"Read. Change. Yourself\"",
                 style = MaterialTheme.typography.headlineSmall,
                 color = Color.Black.copy(0.5f),
