@@ -25,6 +25,7 @@ import com.example.readerapp.navigation.Routes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.draw.scale
+import com.example.readerapp.components.ReaderLogoComponent
 import kotlinx.coroutines.delay
 
 @Composable
@@ -46,7 +47,10 @@ fun ReaderSplashScreen(navController: NavController){
         navController.navigate(Routes.LoginScreen.name)
     }
     Surface(
-        modifier = Modifier.padding(15.dp).size(330.dp).scale(scale.value),
+        modifier = Modifier
+            .padding(15.dp)
+            .size(330.dp)
+            .scale(scale.value),
         shape = CircleShape,
         color = Color.White,
         border = BorderStroke(
@@ -60,11 +64,7 @@ fun ReaderSplashScreen(navController: NavController){
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Text(
-                text = "Reader",
-                style = MaterialTheme.typography.headlineLarge,
-                color = Color.Red.copy(0.5f)
-            )
+            ReaderLogoComponent()
             Spacer(modifier = Modifier.height(15.dp))
             Text(text = "\"Read. Change. Yourself\"",
                 style = MaterialTheme.typography.headlineSmall,
