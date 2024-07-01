@@ -21,9 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.readerapp.components.ReaderLogoComponent
 import com.example.readerapp.components.UserFormComponent
+import com.example.readerapp.viewmodels.AuthViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.readerapp.navigation.Routes
 
 @Composable
-fun LoginScreen(navController: NavController){
+fun LoginScreen(navController: NavController,
+                viewModel: AuthViewModel = viewModel(),
+                ){
 
     val showLoginForm = rememberSaveable { mutableStateOf(true) }
     Surface(modifier = Modifier.fillMaxSize().padding(10.dp),
@@ -35,8 +40,10 @@ fun LoginScreen(navController: NavController){
         ) {
             ReaderLogoComponent()
             if (showLoginForm.value) {
-                UserFormComponent(navController = navController) { email, password ->
-                    // TODO FB Login
+                UserFormComponent(navController = navController,loading = false) { email, password ->
+                    viewModel.signInWithEmailAndPassword(email, password){
+                        navController.navigate(Routes.HomeScreen.name)
+                    }
                 }
 
             } else {
@@ -45,7 +52,9 @@ fun LoginScreen(navController: NavController){
                     loading = false,
                     isCreateAccount = true
                 ) { email, password ->
-                    // TODO FB Signup
+                    viewModel.createUserWithEmailAndPassword(email, password){
+                        navController.navigate(Routes.HomeScreen.name
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))

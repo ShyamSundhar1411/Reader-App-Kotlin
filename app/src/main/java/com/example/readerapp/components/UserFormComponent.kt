@@ -37,7 +37,7 @@ fun UserFormComponent(navController: NavController,
     }
     val passwordFocusRequest = FocusRequester.Default
     val keyboardController = LocalSoftwareKeyboardController.current
-    val valid = remember(email,password) {
+    val valid = remember(email.value,password.value) {
         email.value.trim().isNotEmpty() && password.value.trim().isNotEmpty()
     }
     Column(
