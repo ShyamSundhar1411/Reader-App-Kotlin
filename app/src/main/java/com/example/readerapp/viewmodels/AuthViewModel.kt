@@ -32,6 +32,7 @@ class AuthViewModel: ViewModel() {
             _loading.value = true
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    val displayName = it.result.user?.email?.split("@")?.get(0)
                     _loading.value = false
                     home()
                 } else {

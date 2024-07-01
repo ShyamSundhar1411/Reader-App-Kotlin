@@ -53,7 +53,7 @@ fun LoginScreen(navController: NavController,
                     isCreateAccount = true
                 ) { email, password ->
                     viewModel.createUserWithEmailAndPassword(email, password){
-                        navController.navigate(Routes.HomeScreen.name
+                        navController.navigate(Routes.HomeScreen.name)
                     }
                 }
             }
