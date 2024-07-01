@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.readerapp.models.MUser
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AuthViewModel: ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -41,5 +43,11 @@ class AuthViewModel: ViewModel() {
 
             }
         }
+    }
+    private fun createUser(displayName: String?){
+        val userId = auth.currentUser?.uid
+        val user = MUser(displayName,"John",displayName.toString(), avatarUrl = "",quote = "Life is Great").toMap()
+        FirebaseFirestore.getInstance().collection("users")
+            .add(user)
     }
 }

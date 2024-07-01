@@ -26,6 +26,8 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.draw.scale
 import com.example.readerapp.components.ReaderLogoComponent
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
@@ -44,7 +46,12 @@ fun ReaderSplashScreen(navController: NavController){
                 }
         ))
         delay(2000L)
-        navController.navigate(Routes.LoginScreen.name)
+        if(FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()){
+            navController.navigate(Routes.HomeScreen.name)
+        }else{
+            navController.navigate(Routes.LoginScreen.name)
+        }
+
     }
     Surface(
         modifier = Modifier

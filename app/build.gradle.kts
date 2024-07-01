@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.okhttp)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
