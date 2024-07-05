@@ -10,8 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.readerapp.components.FABComponent
-import com.example.readerapp.components.ReaderTopBarComponent
+import com.example.readerapp.components.homescreen.FABComponent
+import com.example.readerapp.components.common.ReaderTopBarComponent
+import com.example.readerapp.components.homescreen.HomeContent
+import com.example.readerapp.components.homescreen.TitleSection
 import com.example.readerapp.models.MBook
 
 @Composable
@@ -24,18 +26,9 @@ fun HomeScreen(navController: NavHostController) {
             FABComponent(onTap = {})
         }
     ) {
-        Box(modifier = Modifier.padding(it))
-    }
-}
-
-@Composable
-fun ReadingRightNowArea(books: List<MBook>){
-    Surface(modifier = Modifier.padding(start = 5.dp,top = 1.dp)){
-        Column{
-            Text(text = "Your reading activity right now"
-            )
-
+        Box(modifier = Modifier.padding(it)){
+            HomeContent(navController = navController)
         }
     }
-
 }
+

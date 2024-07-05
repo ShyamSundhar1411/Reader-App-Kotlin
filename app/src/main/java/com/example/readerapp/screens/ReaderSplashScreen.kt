@@ -1,7 +1,6 @@
 package com.example.readerapp.screens
 
 import android.view.animation.OvershootInterpolator
-import androidx.compose.animation.Animatable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,8 +24,7 @@ import com.example.readerapp.navigation.Routes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.draw.scale
-import com.example.readerapp.components.ReaderLogoComponent
-import com.google.firebase.Firebase
+import com.example.readerapp.components.homescreen.ReaderLogoComponent
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 

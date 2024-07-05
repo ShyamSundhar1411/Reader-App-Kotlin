@@ -1,4 +1,4 @@
-package com.example.readerapp.components
+package com.example.readerapp.components.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -62,7 +62,7 @@ fun PasswordInputField(
             keyboardType = KeyboardType.Password,
             imeAction = imeAction
         ),
-        trailingIcon = {PasswordVisibility(passwordVisibility = passwordVisibility)},
+        trailingIcon = { PasswordVisibility(passwordVisibility = passwordVisibility) },
         visualTransformation = visualTransformation,
 
 

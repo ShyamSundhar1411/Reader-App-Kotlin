@@ -1,4 +1,4 @@
-package com.example.readerapp.components
+package com.example.readerapp.components.homescreen
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons

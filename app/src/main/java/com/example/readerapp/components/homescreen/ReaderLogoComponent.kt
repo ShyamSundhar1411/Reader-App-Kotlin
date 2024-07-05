@@ -1,4 +1,4 @@
-package com.example.readerapp.components
+package com.example.readerapp.components.homescreen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme

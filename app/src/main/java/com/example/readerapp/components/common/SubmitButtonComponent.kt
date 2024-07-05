@@ -1,4 +1,4 @@
-package com.example.readerapp.components
+package com.example.readerapp.components.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
