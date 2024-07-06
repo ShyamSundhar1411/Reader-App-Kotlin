@@ -5,4 +5,5 @@ data class MBook(
     var title: String? = null,
     var authors: String? = null,
     var notes: String? = null,
+    var bookImageUrl: String? = null,
 )
