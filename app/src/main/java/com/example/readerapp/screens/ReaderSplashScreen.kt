@@ -23,8 +23,11 @@ import androidx.navigation.NavController
 import com.example.readerapp.navigation.Routes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.draw.scale
-import com.example.readerapp.components.homescreen.ReaderLogoComponent
+import androidx.compose.ui.text.style.TextOverflow
+import com.example.readerapp.components.common.ReaderLogoComponent
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
@@ -54,7 +57,7 @@ fun ReaderSplashScreen(navController: NavController){
     Surface(
         modifier = Modifier
             .padding(15.dp)
-            .size(330.dp)
+            .size(350.dp)
             .scale(scale.value),
         shape = CircleShape,
         color = Color.White,
@@ -70,13 +73,14 @@ fun ReaderSplashScreen(navController: NavController){
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             ReaderLogoComponent()
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(20.dp))
             Text(text = "\"Read. Change. Yourself\"",
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.bodySmall,
                 color = Color.Black.copy(0.5f),
-                modifier = Modifier.padding(
-                    bottom = 100.dp
-                )
+                modifier = Modifier.fillMaxWidth(),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+
             )
         }
 

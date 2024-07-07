@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.readerapp.components.homescreen.ReaderLogoComponent
+import com.example.readerapp.components.common.ReaderLogoComponent
 import com.example.readerapp.components.common.UserFormComponent
 import com.example.readerapp.viewmodels.AuthViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -29,12 +30,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.readerapp.components.common.RoundedButtonComponent
 import com.example.readerapp.models.MBook
 
 @Composable
 fun ListCard(
-    book: MBook,
-    onPressDetails: (String) -> Unit
+    book: MBook = MBook("1234"),
+    onPressDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val resources = context.resources
@@ -50,7 +52,8 @@ fun ListCard(
 
             .clickable {
 
-            }
+            },
+        elevation = CardDefaults.cardElevation(6.dp)
     ) {
         Column(
             modifier = Modifier
@@ -98,6 +101,10 @@ fun ListCard(
                 text = "Author All..", modifier = Modifier.padding(4.dp),
                 style = MaterialTheme.typography.bodySmall
             )
+
+        }
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.Bottom) {
+            RoundedButtonComponent(label = "Reading", radius = 70)
         }
 
     }
@@ -110,16 +117,21 @@ fun BookRating(score: Double = 4.5) {
             .height(70.dp)
             .padding(4.dp),
         shape = RoundedCornerShape(56.dp),
-        color = if (score > 4.0) Color.Green else Color.Red
+        color = Color.White,
+        shadowElevation = 6.dp
     ) {
         Column(modifier = Modifier.padding(4.dp)) {
             Icon(
                 imageVector = Icons.Outlined.Star,
                 contentDescription = "Favorite Icon",
-                modifier = Modifier.padding(bottom = 1.dp)
+                modifier = Modifier.padding(bottom = 3.dp)
             )
             Text(text = score.toString(), style = MaterialTheme.typography.bodyLarge)
         }
 
+
     }
+
 }
+
+

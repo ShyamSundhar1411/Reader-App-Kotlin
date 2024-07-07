@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -31,7 +33,6 @@ fun HomeContent(navController: NavController){
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty()) email.split("@")[0] else "NA"
     Column(modifier = Modifier
-        .fillMaxSize()
         .padding(2.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
     ) {
@@ -41,7 +42,9 @@ fun HomeContent(navController: NavController){
             Column(modifier = Modifier.align(Alignment.CenterVertically),) {
                 Icon(imageVector = Icons.Filled.AccountCircle,
                     contentDescription = "profile",
-                    modifier = Modifier.size(45.dp).clickable {
+                    modifier = Modifier
+                        .size(45.dp)
+                        .clickable {
                             navController.navigate(Routes.ReadersStatsScreen.name)
                         },
                     tint = MaterialTheme.colorScheme.secondary
@@ -55,8 +58,10 @@ fun HomeContent(navController: NavController){
                     fontSize = 15.sp,
                     overflow = TextOverflow.Clip
                     )
+                HorizontalDivider()
 
             }
         }
+        ListCard()
     }
 }
