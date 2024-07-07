@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.readerapp.models.MBook
 import com.example.readerapp.navigation.Routes
 import com.google.firebase.auth.FirebaseAuth
 
@@ -32,6 +33,13 @@ fun HomeContent(navController: NavController){
 
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty()) email.split("@")[0] else "NA"
+    val listOfBooks = listOf(
+          MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null),
+        MBook(id = "dadfa", title = " Again", authors = "All of us", notes = null),
+        MBook(id = "dadfa", title = "Hello ", authors = "The world us", notes = null),
+        MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null),
+        MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null)
+                            )
     Column(modifier = Modifier
         .padding(2.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -63,5 +71,6 @@ fun HomeContent(navController: NavController){
             }
         }
         ListCard()
+        ReadingListAreaComponent(listOfBooks = listOfBooks, navController = navController)
     }
 }
