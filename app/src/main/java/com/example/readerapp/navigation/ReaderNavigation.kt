@@ -8,6 +8,7 @@ import com.example.readerapp.screens.HomeScreen
 import com.example.readerapp.screens.LoginScreen
 import com.example.readerapp.screens.ReaderSplashScreen
 import com.example.readerapp.screens.ReadersStatsScreen
+import com.example.readerapp.screens.SearchScreen
 
 @Composable
 fun ReaderNavigation() {
@@ -26,7 +27,9 @@ fun ReaderNavigation() {
         composable(Routes.ReadersStatsScreen.name) {
             ReadersStatsScreen(navController)
         }
-
+        composable(Routes.SearchScreen.name){
+            SearchScreen(navController = navController)
+        }
 
     }
 }

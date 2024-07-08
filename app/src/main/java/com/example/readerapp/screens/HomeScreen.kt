@@ -9,21 +9,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.readerapp.components.homescreen.FABComponent
 import com.example.readerapp.components.common.ReaderTopBarComponent
 import com.example.readerapp.components.homescreen.HomeContent
 import com.example.readerapp.components.homescreen.TitleSection
 import com.example.readerapp.models.MBook
+import com.example.readerapp.navigation.Routes
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
-            ReaderTopBarComponent(title = "A.Reader",isMainScreen = true , navController = navController)
+            ReaderTopBarComponent(title = "A.Reader", navController = navController)
         },
         floatingActionButton = {
-            FABComponent(onTap = {})
+            FABComponent(onTap = {
+                navController.navigate(Routes.SearchScreen.name)
+            })
         }
     ) {
         Box(modifier = Modifier.padding(it)){

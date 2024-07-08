@@ -39,7 +39,7 @@ fun ReadingListAreaComponent(
     navController: NavController
 ) {
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Start) {
-        Text("Reading Area", modifier = Modifier.padding(10.dp))
+        Text("Reading List", modifier = Modifier.padding(10.dp))
         HorizontalScrollableComponent(listOfBooks){
         }
 

@@ -1,5 +1,6 @@
 package com.example.readerapp.components.common
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,9 +32,10 @@ import com.google.firebase.auth.FirebaseAuth
 @Composable
 fun ReaderTopBarComponent(
     title: String,
-    isMainScreen: Boolean,
+    icon: ImageVector?= null,
     showProfile: Boolean = true,
     navController: NavController,
+    onBackArrowClicked: () -> Unit = {}
     ){
     TopAppBar(
         title = {
@@ -48,6 +51,16 @@ fun ReaderTopBarComponent(
                         )
 
                 }
+                if(icon !=null){
+                    Icon(imageVector = icon, contentDescription = "arrow back",
+                        tint = Color.Red.copy(alpha = 0.7f),
+                        modifier = Modifier.clickable{
+                            onBackArrowClicked.invoke()
+                        }
+
+                    )
+                }
+                Spacer(modifier = Modifier.width(40.dp))
                 Text(
                     text = title,
                     color = Color.Red.copy(alpha = 0.7f),
@@ -56,23 +69,27 @@ fun ReaderTopBarComponent(
                         fontSize = 20.sp
                     )
                 )
-                Spacer(modifier = Modifier.width(150.dp))
+
             }
         },
         actions = {
-                  IconButton(onClick = {
-                      FirebaseAuth.getInstance().signOut().run {
-                          navController.navigate(Routes.LoginScreen.name)
-                      }
+            if(showProfile) {
+                IconButton(onClick = {
+                    FirebaseAuth.getInstance().signOut().run {
+                        navController.navigate(Routes.LoginScreen.name)
                     }
-                      ){
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ExitToApp,
-                            contentDescription = "Logout",
-                            tint = Color.Red.copy(alpha = 0.4f)
-                        )
-                    }
-
+                }
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                        contentDescription = "Logout",
+                        tint = Color.Red.copy(alpha = 0.4f)
+                    )
+                }
+            }
+            else{
+                Row(){}
+            }
         },
 
     )
