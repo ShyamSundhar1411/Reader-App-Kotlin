@@ -1,4 +1,4 @@
-package com.example.readerapp.data
+package com.example.readerapp.models
 
 data class Book(
     val items: List<Item>,

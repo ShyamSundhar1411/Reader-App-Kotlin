@@ -1,6 +1,6 @@
-package com.example.readerapp.data
+package com.example.readerapp.models
 
-data class Pdf(
+data class Epub(
     val acsTokenLink: String,
     val isAvailable: Boolean
 )

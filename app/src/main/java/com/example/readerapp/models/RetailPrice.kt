@@ -1,4 +1,4 @@
-package com.example.readerapp.data
+package com.example.readerapp.models
 
 data class RetailPrice(
     val amountInMicros: Long,

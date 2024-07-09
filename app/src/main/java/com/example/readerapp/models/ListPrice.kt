@@ -1,4 +1,4 @@
-package com.example.readerapp.data
+package com.example.readerapp.models
 
 data class ListPrice(
     val amount: Double,
