@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.readerapp.components.common.InputField
 import com.example.readerapp.viewmodels.BookViewModel
 
@@ -16,8 +17,8 @@ fun SearchFormComponent(
     modifier: Modifier = Modifier,
     loading: Boolean = false,
     hint: String = "Search",
-    viewModel: BookViewModel,
-    onSearch: (String) -> Unit = {},
+    viewModel: BookViewModel = hiltViewModel(),
+    onSearch: (String) -> Unit,
 ){
     Column {
         val searchQueryState = rememberSaveable() {
