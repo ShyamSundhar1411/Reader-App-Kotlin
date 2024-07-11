@@ -9,13 +9,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.readerapp.components.common.ReaderTopBarComponent
 import com.example.readerapp.components.searchscreen.SearchFormComponent
 import com.example.readerapp.models.MBook
+import com.example.readerapp.viewmodels.BookViewModel
 
 @Composable
-fun SearchScreen(navController: NavController){
+fun SearchScreen(navController: NavController,viewModel: BookViewModel = hiltViewModel()){
     val listOfBooks = listOf(
         MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null),
         MBook(id = "dadfa", title = " Again", authors = "All of us", notes = null),
@@ -36,7 +38,9 @@ fun SearchScreen(navController: NavController){
         }
     ) {
         Box(modifier = Modifier.padding(it)){
-            SearchFormComponent(modifier = Modifier.fillMaxWidth().padding(16.dp))
+            SearchFormComponent(modifier = Modifier.fillMaxWidth().padding(16.dp), viewModel = viewModel){
+                query -> viewModel.searchBooks(query)
+            }
         }
     }
 }

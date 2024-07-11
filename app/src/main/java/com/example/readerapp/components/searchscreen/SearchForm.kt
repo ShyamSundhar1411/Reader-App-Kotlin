@@ -9,13 +9,15 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import com.example.readerapp.components.common.InputField
+import com.example.readerapp.viewmodels.BookViewModel
 
 @Composable
 fun SearchFormComponent(
     modifier: Modifier = Modifier,
     loading: Boolean = false,
     hint: String = "Search",
-    onSearch: (String) -> Unit = {}
+    viewModel: BookViewModel,
+    onSearch: (String) -> Unit = {},
 ){
     Column {
         val searchQueryState = rememberSaveable() {
