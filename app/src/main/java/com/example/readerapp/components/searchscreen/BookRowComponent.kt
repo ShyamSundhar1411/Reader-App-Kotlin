@@ -46,11 +46,7 @@ fun BookRowComponent(navController: NavController, book: Item){
         Row(modifier = Modifier.padding(5.dp),
             verticalAlignment = Alignment.Top
             ){
-            val imageUrl: String = if(book.volumeInfo.imageLinks.smallThumbnail.isEmpty())
-                "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80"
-            else {
-                book.volumeInfo.imageLinks.smallThumbnail
-            }
+            val imageUrl: String = book.volumeInfo.imageLinks.smallThumbnail.ifEmpty { "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" }
             Image(
                 painter = rememberAsyncImagePainter(model = ImageRequest.Builder(LocalContext.current).data(data = imageUrl).build()),
                 contentDescription = "book image",

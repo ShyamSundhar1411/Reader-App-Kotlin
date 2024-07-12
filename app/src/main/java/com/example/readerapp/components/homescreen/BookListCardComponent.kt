@@ -65,7 +65,7 @@ fun ListCard(
                 Image(
                     painter = rememberAsyncImagePainter(
                         model = ImageRequest.Builder(context)
-                            .data(data = book.bookImageUrl.toString())
+                            .data(data = book.photoUrl.toString())
                             .build()
                     ),
                     contentDescription = "book image",
