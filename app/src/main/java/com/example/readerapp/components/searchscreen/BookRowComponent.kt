@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,17 +27,21 @@ import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.example.readerapp.models.Item
+import com.example.readerapp.navigation.Routes
 
 @Composable
 fun BookRowComponent(navController: NavController, book: Item){
-    Card(onClick = { /*TODO*/ },
+    Card(onClick = {
+        navController.navigate(Routes.DetailScreen.name+"/${book.volumeInfo.title}/${book.id}")
+    },
         modifier = Modifier
             .clickable { }
             .fillMaxWidth()
             .height(100.dp)
             .padding(3.dp),
         shape = RectangleShape,
-        elevation = CardDefaults.cardElevation(2.dp)
+        elevation = CardDefaults.cardElevation(2.dp),
+        colors = CardDefaults.cardColors(Color.White)
         ) {
         Row(modifier = Modifier.padding(5.dp),
             verticalAlignment = Alignment.Top

@@ -1,5 +1,6 @@
 package com.example.readerapp.repository
 
+import android.util.Log
 import com.example.readerapp.data.DataOrException
 import com.example.readerapp.data.Resource
 import com.example.readerapp.models.Item
@@ -25,6 +26,7 @@ class BookRepository @Inject constructor(private val api: BooksApi){
             api.getBookInfo(bookId)
 
         }catch (e: Exception){
+            Log.d("Network", "getBookInfo: ${e.message.toString()}")
             return Resource.Error(e.message.toString())
         }
         Resource.Loading(data = false)

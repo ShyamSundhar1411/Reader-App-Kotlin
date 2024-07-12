@@ -36,6 +36,7 @@ class AuthViewModel: ViewModel() {
                 if (it.isSuccessful) {
                     val displayName = it.result.user?.email?.split("@")?.get(0)
                     _loading.value = false
+                    createUser(displayName)
                     home()
                 } else {
                     _loading.value = false
@@ -46,7 +47,7 @@ class AuthViewModel: ViewModel() {
     }
     private fun createUser(displayName: String?){
         val userId = auth.currentUser?.uid
-        val user = MUser(displayName,"John",displayName.toString(), avatarUrl = "",quote = "Life is Great").toMap()
+        val user = MUser(displayName = displayName.toString(),userId = userId.toString(), avatarUrl = "",quote = "Life is Great",id = null).toMap()
         FirebaseFirestore.getInstance().collection("users")
             .add(user)
     }
