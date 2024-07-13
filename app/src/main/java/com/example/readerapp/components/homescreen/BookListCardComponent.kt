@@ -35,7 +35,7 @@ import com.example.readerapp.models.MBook
 
 @Composable
 fun ListCard(
-    book: MBook = MBook("1234"),
+    book: MBook,
     onPressDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -92,13 +92,13 @@ fun ListCard(
 
             }
             Text(
-                text = "Book title", modifier = Modifier.padding(4.dp),
+                text = book.title.toString(), modifier = Modifier.padding(4.dp),
                 fontWeight = FontWeight.Bold,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "Author All..", modifier = Modifier.padding(4.dp),
+                text = book.authors.toString(), modifier = Modifier.padding(4.dp),
                 style = MaterialTheme.typography.bodySmall
             )
 

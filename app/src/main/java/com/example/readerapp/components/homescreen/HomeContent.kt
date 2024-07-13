@@ -5,13 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,23 +21,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.readerapp.models.MBook
 import com.example.readerapp.navigation.Routes
+import com.example.readerapp.viewmodels.HomeViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun HomeContent(navController: NavController){
-
+fun HomeContent(navController: NavController, viewModel: HomeViewModel = hiltViewModel()){
+    var listOfBooks = emptyList<MBook>()
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty()) email.split("@")[0] else "NA"
-    val listOfBooks = listOf(
-          MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null),
-        MBook(id = "dadfa", title = " Again", authors = "All of us", notes = null),
-        MBook(id = "dadfa", title = "Hello ", authors = "The world us", notes = null),
-        MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null),
-        MBook(id = "dadfa", title = "Hello Again", authors = "All of us", notes = null)
-                            )
+    val currentUser = FirebaseAuth.getInstance().currentUser
+
+    if(!viewModel.data.value.data.isNullOrEmpty()){
+        listOfBooks = viewModel.data.value.data!!.toList().filter { mBook -> mBook.userId == currentUser?.uid.toString() }
+    }
+
     Column(modifier = Modifier
         .padding(2.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -70,7 +69,8 @@ fun HomeContent(navController: NavController){
 
             }
         }
-        ListCard()
+        ReadingRightNowAreaComponent(listOfBooks = listOfBooks,
+            navController =navController )
         ReadingListAreaComponent(listOfBooks = listOfBooks, navController = navController)
     }
 }
